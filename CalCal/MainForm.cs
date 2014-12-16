@@ -200,22 +200,6 @@ namespace CalCal
             
         }
 
-        //private void ReadMouth(string s)
-        //{
-        //    using (var sr = new StreamReader(new FileStream(s, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
-        //    {
-        //        while (!sr.EndOfStream)
-        //        {
-        //            var line = sr.ReadLine();
-        //            if (line == null) continue;
-
-        //            var mas = line.Split(' ');
-        //            if (mas.Length == 2)
-        //                _mouths.Add(new Mouth(mas[0], Convert.ToInt32(mas[1])));
-        //        }
-        //    }
-        //}
-
         private void ReadFile2(string s)
         {
             var temp1 = new List<string>();
