@@ -41,6 +41,11 @@ namespace CalCal
                 Environment.CurrentDirectory + @"/lovdat.txt" : @"Файл в корне прграммы отсутствует";
         }
 
+        private static bool CheckElementForAdd(string[] mas, int i)
+        {
+            return mas[i] != "" && mas[i] != "\t";
+        }
+
         private void Calculate()
         {
             if(_file1.Count == 0 || _filters.Count == 0) return;
@@ -209,9 +214,9 @@ namespace CalCal
                 var line = sr.ReadLine();
                 if (line == null) return;
 
-                var mas = line.Split(' ');
+                var mas = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 for (var i = 0; i < mas.Length; i++)
-                    if(mas[i] != "")
+                    if(CheckElementForAdd(mas, i))
                         temp1.Add(mas[i]);
             }
 
@@ -257,10 +262,10 @@ namespace CalCal
                             var line = sr.ReadLine();
                             if (line == null) return;
 
-                            var mas = line.Split(' ');
+                            var mas = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                             var temp2 = new List<string>();
                             for (var i = 0; i < mas.Length; i++)
-                                if (mas[i] != "")
+                                if (CheckElementForAdd(mas, i))
                                     temp2.Add(mas[i]);
 
                             if (temp2.Count == 0) continue;
@@ -297,7 +302,7 @@ namespace CalCal
                     var line = sr.ReadLine();
                     if (line == null) continue;
 
-                    var mas = line.Split(' ');
+                    var mas = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     var temp = new List<string>();
                     for (var i = 0; i < mas.Length; i++)
                         if(!mas[i].Equals(""))
